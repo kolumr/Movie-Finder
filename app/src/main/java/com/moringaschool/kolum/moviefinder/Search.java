@@ -3,21 +3,21 @@ package com.moringaschool.kolum.moviefinder;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.moringaschool.kolum.moviefinder.databinding.ActivityMainBinding;
+import com.moringaschool.kolum.moviefinder.databinding.SearchBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class Search extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        com.moringaschool.kolum.moviefinder.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.moringaschool.kolum.moviefinder.databinding.SearchBinding binding = SearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.discoverButton.setOnClickListener(view -> {
-            Intent intentLoadDiscoverActivity = new Intent(MainActivity.this, Discover.class);
+            Intent intentLoadDiscoverActivity = new Intent(Search.this, Discover.class);
             startActivity(intentLoadDiscoverActivity);
         });
-        binding.searchButton.setOnClickListener(view -> {
-            Intent intentLoadSearchActivity = new Intent(MainActivity.this, Search.class);
+        binding.discoverButton.setOnClickListener(view -> {
+            Intent intentLoadSearchActivity = new Intent(Search.this, Discover.class);
             startActivity(intentLoadSearchActivity);
         });
     }
