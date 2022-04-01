@@ -14,8 +14,8 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         com.moringaschool.kolum.moviefinder.databinding.SearchBinding binding = SearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.discoverButton.setOnClickListener(view -> {
-            Intent intentLoadDiscoverActivity = new Intent(Search.this, Discover.class);
+        binding.homeButton.setOnClickListener(view -> {
+            Intent intentLoadDiscoverActivity = new Intent(Search.this, MainActivity.class);
             startActivity(intentLoadDiscoverActivity);
         });
         binding.discoverButton.setOnClickListener(view -> {
