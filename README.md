@@ -13,3 +13,6 @@ Kolum Ronald [https://github.com/kolumr]
 
 ## API used
 The Movie Database (TMDB) API - https://api.themoviedb.org/3/
+
+## APK Download link
+https://ufile.io/etg796c8
