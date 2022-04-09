@@ -9,4 +9,7 @@
     <string name="trending_series_text">Trending Series</string>
     <string name="search_by_name">Search by Name</string>
     <string name="home_button">Home Button</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="log_in">Log in</string>
 </resources>

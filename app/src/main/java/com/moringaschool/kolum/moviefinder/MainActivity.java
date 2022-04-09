@@ -1,5 +1,6 @@
 package com.moringaschool.kolum.moviefinder;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.moringaschool.kolum.moviefinder.databinding.ActivityMainBinding;
+
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     ActivityMainBinding binding ;
@@ -19,6 +22,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.discoverButton.setOnClickListener(this);
         binding.searchButton.setOnClickListener(this);
         binding.homeButton.setOnClickListener(this);
+
+
+        String url = "https://api.themoviedb.org/3/trending/movie/day?api_key=6a3d6c93e17763b6a2e036f59c735020";
+
+
     }
 
     @Override
