@@ -12,7 +12,11 @@ import java.util.ArrayList;
 
 public class Discover extends AppCompatActivity implements View.OnClickListener{
     DiscoverBinding binding;
-
+    private final String[] restaurants = new String[] {"Mi Mero Mole", "Mother's Bistro",
+            "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
+            "Slappy Cakes", "Equinox", "Miss Delta's", "Andina",
+            "Lardo", "Portland City Grill", "Fat Head's Brewery",
+            "Chipotle", "Subway"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +25,9 @@ public class Discover extends AppCompatActivity implements View.OnClickListener{
         binding.discoverButton.setOnClickListener(this);
         binding.searchButton.setOnClickListener(this);
         binding.homeButton.setOnClickListener(this);
-        String [] movies = {"Panari", "Weston", "Kempinski"};
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, movies);
+
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, restaurants);
         binding.listView.setAdapter(adapter);
     }
     @Override
