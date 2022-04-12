@@ -1,13 +1,17 @@
 package com.moringaschool.kolum.moviefinder;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.moringaschool.kolum.moviefinder.databinding.ActivityMainBinding;
+import com.moringaschool.kolum.moviefinder.models.apiResponse;
+import com.moringaschool.kolum.moviefinder.network.MovieApi;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -21,10 +25,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.discoverButton.setOnClickListener(this);
         binding.searchButton.setOnClickListener(this);
         binding.homeButton.setOnClickListener(this);
+        String url = "https://api.themoviedb.org/3/";
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
+        MovieApi movieApi = retrofit.create(MovieApi.class);
+        Call<apiResponse> call = movieApi.getResponse();
+        call.enqueue(new Callback<apiResponse>() {
+            @Override
+            public void onResponse(Call<apiResponse> call, Response<apiResponse> response) {
+                apiResponse movies = response.body();
+                if (!response.isSuccessful()) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "failure",
+                            Toast.LENGTH_LONG);
 
-        String url = "https://api.themoviedb.org/3/trending/movie/day?api_key=6a3d6c93e17763b6a2e036f59c735020";
+                    toast.show();
+                }
+                Toast toast = Toast.makeText(MainActivity.this,
+                        movies.getResults().toString(),
+                        Toast.LENGTH_LONG);
 
+                toast.show();
+            }
+
+            @Override
+            public void onFailure(Call<apiResponse> call, Throwable t) {
+                Toast toast = Toast.makeText(MainActivity.this,
+                        "Error fetching data",
+                        Toast.LENGTH_SHORT);
+
+                toast.show();
+            }
+        });
 
     }
 
